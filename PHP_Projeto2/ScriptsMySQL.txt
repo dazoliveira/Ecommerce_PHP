@@ -1,0 +1,44 @@
+//Credenciais
+server = "localhost"
+db = "db_projeto2_php"
+user = "root"
+password = ""
+
+
+==============================================
+
+CREATE TABLE `products` (
+`id` int(11) NOT NULL,
+`nome` varchar(200) NOT NULL,
+`valor` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `products` (`id`, `nome`, `valor`) VALUES
+(1, 'Notebook - i7 3.0, 500Gb HD, 15\"', '2450.50'),
+(2, 'Notebook - i5 2.5, 500Gb HD, 14\"', '1985.25'),
+(3, 'Notebook - i3 2.0, 250Gb HD, 12\"', '1489.30'),
+(10, 'Mouse padrão', '32.50'),
+(12, 'Teclado - 102 teclas', '45.00'),
+(15, 'Mouse wireless', '88.90'),
+(17, 'Monitor 24\"', '850.33'),
+(18, 'Filtro de linha', '12.66'),
+(19, 'Nobreak 100W', '200.40'),
+(22, 'Mousepad', '18.90'),
+(25, 'Monitor 20\"', '700.40'),
+(35, 'Fonte 50W', '100.10');
+CREATE TABLE `users` (
+`id` int(11) NOT NULL,
+`nome` varchar(200) NOT NULL,
+`usuario` varchar(50) NOT NULL,
+`senha` varchar(32) NOT NULL,
+`ativo` tinyint(1) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `users` (`id`, `nome`, `usuario`, `senha`, `ativo`) VALUES
+(1, 'João da Silva', 'joaosilva', md5('123'), 1),
+(3, 'Maria Ribeiro', 'mariarib', md5('abc'), 1),
+(8, 'Renato Augusto', 'renato', md5('qq@ww'), 1),
+(12, 'Rogério Pereira', 'rogerio', md5('abc'), null);
+ALTER TABLE `products` ADD PRIMARY KEY (`id`);
+ALTER TABLE `users` ADD PRIMARY KEY (`id`);
+ALTER TABLE `users` ADD UNIQUE KEY `uk_usuario` (`usuario`);
+ALTER TABLE `products` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `users` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
